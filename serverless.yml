@@ -1,0 +1,55 @@
+org: diegofigueroaw
+service: api-productos
+
+provider:
+  name: aws
+  runtime: python3.13
+  timeout: 30
+  iam:
+    role: arn:aws:iam::193240083209:role/LabRole
+
+functions:
+  crear:
+    handler: CrearProducto.lambda_handler
+    events:
+      - http:
+          path: /productos/crear
+          method: post
+          cors: true
+          integration: lambda
+
+  listar:
+    handler: ListarProductos.lambda_handler
+    events:
+      - http:
+          path: /productos/listar
+          method: post
+          cors: true
+          integration: lambda
+
+  buscar:
+    handler: BuscarProducto.lambda_handler
+    events:
+      - http:
+          path: /productos/buscar
+          method: post
+          cors: true
+          integration: lambda
+
+  modificar:
+    handler: ModificarProducto.lambda_handler
+    events:
+      - http:
+          path: /productos/modificar
+          method: put
+          cors: true
+          integration: lambda
+
+  eliminar:
+    handler: EliminarProducto.lambda_handler
+    events:
+      - http:
+          path: /productos/eliminar
+          method: delete
+          cors: true
+          integration: lambda
