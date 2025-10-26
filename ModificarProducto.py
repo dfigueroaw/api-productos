@@ -2,7 +2,7 @@ import boto3
 import json
 
 def lambda_handler(event, context):
-    data = json.loads(event['body'])
+    data = event['body']
     tenant_id = data['tenant_id']
     producto_id = data['producto_id']
     updates = data['updates']

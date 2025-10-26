@@ -3,7 +3,7 @@ import json
 
 def lambda_handler(event, context):
     print(event)
-    producto = json.loads(event['body'])
+    producto = event['body']
     
     token = event['headers']['Authorization']
     lambda_client = boto3.client('lambda')
